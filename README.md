@@ -21,7 +21,7 @@ Perform a git clone
 
 
 ```
-git clone https://github.com/applied-network-security/aws-pentesting-lab.git
+git clone https://github.com/applied-network-security/aws-exam-cft-prep.git
 ```
 
 
