@@ -64,6 +64,3 @@ win_ip = "ec2-3-94-29-62.compute-1.amazonaws.com"
 
 ### RPD to windows servers
 You need to go to the aws condole and click connect for RDP, you will require the private key to get the password.. to get the private key look in cloud9 cat ~/.ssh/id_rsa
-
-
-### Kali Linux
