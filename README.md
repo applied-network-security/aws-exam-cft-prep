@@ -1,6 +1,69 @@
-# aws-practice-exam
+# Exam Prep Environment
 
-nmap -sS -P0 -sV -O 10.200.2.253
-nmap -sS -P0 -sV -O 10.200.2.237
-nmap -sS -P0 -sV -O 10.200.2.149
+## Step 0: Launch AWS Academy and log into cloud9
 
+## Step 1: Generata your secure keys
+
+* Log into your cloud9 instances
+* Note this will generate ed25519 and rsa key (rsa is for windows)
+* These keys are what you will use to log into the machines from your cloud9 box
+* To get windows password you will need to the private key located ~/.ssh/id_rsa
+
+
+```
+ssh-keygen -t ed25519 -C "your_email@example.com"
+ssh-keygen -t rsa -C "your_email@example.com"
+```
+
+
+### Step 2: Pull the Repo to your Cloud9 instance 
+Perform a git clone
+
+
+```
+git clone https://github.com/applied-network-security/aws-pentesting-lab.git
+```
+
+
+### Step 3: Edit some variables
+If you log into cd terraform you will see a terraform.tfvars file edi this file and insert your public ipv4
+
+### Step 4: Install terraform in Cloud9
+```
+sudo yum install terraform -y
+```
+
+### Step 5: Launch: Perform Terraform Init/Plan and Apply
+
+terraform init: The terraform init command is used to initialize a working directory containing Terraform configuration files. This is the first command that should be run after writing a new Terraform configuration or cloning an existing one from version control. It is safe to run this command multiple times.
+
+
+```
+terraform init
+```
+
+The terraform plan command creates an execution plan. By default, creating a plan consists of: Reading the current state of any already-existing remote objects to make sure that the Terraform state is up-to-date. Comparing the current configuration to the prior state and noting any differences.
+
+```
+terrafrom plan 
+```
+
+The terraform apply command executes the actions proposed in a Terraform plan. ... Another way to use terraform apply is to pass it the filename of a saved plan file you created earlier with terraform plan -out=... , in which case Terraform will apply the changes in the plan without any confirmation prompt.
+
+```
+terrafrom apply
+```
+
+### Step 6: The output
+The output will look similar to below, it will allow you to ssh to the servers
+
+bastion_ip = "ssh ec2-user@ec2-18-206-46-176.compute-1.amazonaws.com"
+juiceshop_ip = "ssh ec2-user@ec2-54-236-243-242.compute-1.amazonaws.com"
+linux_ip = "ssh ec2-user@ec2-34-205-55-32.compute-1.amazonaws.com"
+win_ip = "ec2-3-94-29-62.compute-1.amazonaws.com"
+
+### RPD to windows servers
+You need to go to the aws condole and click connect for RDP, you will require the private key to get the password.. to get the private key look in cloud9 cat ~/.ssh/id_rsa
+
+
+### Kali Linux
